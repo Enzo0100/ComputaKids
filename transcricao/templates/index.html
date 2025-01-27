@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComputaKids - Aprenda Computação!</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>ComputaKids 🖥️</h1>
+    <p>Aprenda sobre computadores de forma divertida!</p>
+    <div class="mode-toggle">
+      <button id="toggle-mode" class="mode-btn">
+        <span class="icon">💭</span> Modo Consulta
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="game-container">
+      <div class="score-board">
+        <div class="stars">⭐⭐⭐</div>
+        <div class="points">Pontos: <span id="score">0</span></div>
+      </div>
+
+      <div class="game-area">
+        <div id="character" class="character">
+          <img src="/static/images/robot.svg" alt="Robô Professor">
+          <div id="speech-bubble" class="speech-bubble hidden">
+            <p id="question-text"></p>
+            <button id="skip-question" class="skip-btn">
+              <span class="icon">🤔</span> Não sei a resposta
+            </button>
+          </div>
+        </div>
+
+        <div id="feedback" class="feedback hidden">
+          <div class="feedback-icon"></div>
+          <div class="feedback-text"></div>
+        </div>
+
+        <div class="chatbox">
+          <div id="messages"></div>
+          <div class="controls">
+            <button id="start-recording" class="control-btn">
+              <span class="icon">🎤</span> Falar Resposta
+            </button>
+            <button id="stop-recording" class="control-btn" disabled>
+              <span class="icon">⏹</span> Parar
+            </button>
+          </div>
+          <div class="input-container">
+            <input type="text" id="user-input" placeholder="Ou digite sua resposta..." />
+            <button id="send-button">Enviar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="level-complete" class="modal hidden">
+    <div class="modal-content">
+      <h2>🎉 Parabéns! 🎉</h2>
+      <p>Você completou o nível!</p>
+      <div class="stars-earned"></div>
+      <button id="next-level">Próximo Nível</button>
+    </div>
+  </div>
+
+  <div id="game-complete" class="modal hidden">
+    <div class="modal-content">
+      <h2>🎉 Parabéns! 🎉</h2>
+      <p>Você completou todos os níveis!</p>
+      <p>Pontuação final: <span id="final-score">0</span></p>
+      <div class="total-stars"></div>
+      <button id="restart-game" class="restart-btn">
+        <span class="icon">🔄</span> Jogar Novamente
+      </button>
+    </div>
+  </div>
+
+  <div id="skip-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>😔 Poxa, não foi dessa vez...</h2>
+      <p>Não tem problema! Vamos ver a resposta e aprender juntos:</p>
+      <div class="answer-box">
+        <p id="correct-answer"></p>
+      </div>
+      <button id="continue-game" class="continue-btn">
+        <span class="icon">➡️</span> Próxima Pergunta
+      </button>
+    </div>
+  </div>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
