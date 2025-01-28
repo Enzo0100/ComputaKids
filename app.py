@@ -82,11 +82,24 @@ def transcribe():
         return jsonify({"error": "Nenhum arquivo selecionado"}), 400
         
     try:
-        # Aqui você implementaria a lógica de transcrição do áudio
-        # Por enquanto, retornamos um erro informando que a funcionalidade não está disponível
+        import whisper
+        import tempfile
+
+        # Salvar o arquivo de áudio temporariamente
+        with tempfile.NamedTemporaryFile(delete=False) as temp_audio_file:
+            audio_file.save(temp_audio_file.name)
+            temp_audio_path = temp_audio_file.name
+
+        # Carregar o modelo Whisper
+        model = whisper.load_model("base")
+
+        # Transcrever o áudio em português
+        result = model.transcribe(temp_audio_path, language='pt')
+
+        # Retornar a transcrição
         return jsonify({
-            "error": "Transcrição de áudio ainda não implementada"
-        }), 501
+            "transcription": result['text']
+        }), 200
     except Exception as e:
         print(f"Erro na transcrição: {str(e)}")
         return jsonify({"error": str(e)}), 500
