@@ -106,6 +106,21 @@ async function handleSkipQuestion() {
   elements.correctAnswer.textContent = gameConfig.currentQuestion.expected_answer;
   elements.skipModal.classList.remove("hidden");
   elements.speechBubble.classList.add("hidden");
+  showMessage(`A resposta correta é: ${gameConfig.currentQuestion.expected_answer}`, "bot");
+  fetch('/speak', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text: `A resposta correta é: ${gameConfig.currentQuestion.expected_answer}` })
+  })
+  .then(response => response.blob())
+  .then(blob => {
+    const url = URL.createObjectURL(blob);
+    const audio = new Audio(url);
+    audio.addEventListener('canplaythrough', () => {
+        audio.play();
+    });
+  })
+  .catch(error => console.error('Erro ao obter áudio:', error));
 }
 
 // Reiniciar jogo

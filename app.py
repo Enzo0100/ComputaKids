@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify, render_template, send_from_directory
 from app.groq_model import GroqModel
 from app.teaching_assistant import TeachingAssistant
 import os
+from gtts import gTTS
+import tempfile
 
 app = Flask(__name__, 
     template_folder='transcricao/templates',
@@ -102,6 +104,26 @@ def transcribe():
         }), 200
     except Exception as e:
         print(f"Erro na transcrição: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/speak', methods=['POST'])
+def speak():
+    """Converte texto em áudio e retorna o arquivo de áudio."""
+    data = request.json
+    text = data.get('text')
+    
+    if not text:
+        return jsonify({"error": "Texto não fornecido"}), 400
+
+    try:
+        tts = gTTS(text, lang='pt')
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as temp_audio_file:
+            tts.save(temp_audio_file.name)
+            temp_audio_path = temp_audio_file.name
+
+        return send_from_directory(os.path.dirname(temp_audio_path), os.path.basename(temp_audio_path), as_attachment=True)
+    except Exception as e:
+        print(f"Erro ao converter texto em áudio: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
