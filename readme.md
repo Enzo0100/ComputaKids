@@ -36,3 +36,7 @@
 "Aqui está o que alguns de nossos avaliadores externos têm a dizer sobre nosso projeto: 'Uma ferramenta revolucionária para a educação moderna.'"
 
 Este roteiro fornece uma abordagem estruturada para apresentar o projeto em formato de vídeo, cobrindo todos os aspectos principais mencionados em sua solicitação.
+
+Links:
+link do video: https://drive.google.com/file/d/1kM7Wt0cYgel-j4XEURu-OzNdP-fgqgFg/view?pli=1
+link do documento: https://docs.google.com/document/d/1Z4Wg7Sno8US6Y_pslvtLPU9YdC7Jx8_9uXcuTmLpUQ0/edit?pli=1&tab=t.0
