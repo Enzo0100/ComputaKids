@@ -39,4 +39,5 @@ Este roteiro fornece uma abordagem estruturada para apresentar o projeto em form
 
 Links:
 link do video: https://drive.google.com/file/d/1kM7Wt0cYgel-j4XEURu-OzNdP-fgqgFg/view?pli=1
+
 link do documento: https://docs.google.com/document/d/1Z4Wg7Sno8US6Y_pslvtLPU9YdC7Jx8_9uXcuTmLpUQ0/edit?pli=1&tab=t.0
